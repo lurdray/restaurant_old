@@ -1,0 +1,440 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+		<aside id="colorlib-hero">
+			<div class="flexslider">
+				<ul class="slides">
+					{% for slider in sliders %}
+			   	<li style="background-image: url({{ slider.image.url }});">
+			   		<div class="overlay"></div>
+			   		<div class="container-fluid">
+			   			<div class="row">
+				   			<div class="col-md-6 col-sm-12 col-xs-12 col-md-offset-3 slider-text">
+				   				<div class="slider-text-inner text-center">
+				   					<div class="desc">
+				   						<span class="icon"><i class="flaticon-cutlery"></i></span>
+					   					<h1>{{ slider.title }}</h1>
+					   					<p>{{ slider.description }}</p>
+					   					<p><a href="/reservation" class="btn btn-primary btn-lg btn-learn">Book a table</a></p>
+					   					<div class="desc2"></div>
+				   					</div>
+				   				</div>
+				   			</div>
+				   		</div>
+			   		</div>
+			   	</li>
+			   	{% endfor %}	
+			  	</ul>
+			  	<div class="mouse">
+				   <a href="#" class="mouse-icon">
+				   	<div class="mouse-wheel"></div>
+				   </a>
+				</div>
+		  	</div>
+		</aside>
+
+		<div class="colorlib-intro">
+			<div class="container">
+				{% for setting in settings %}
+				<div class="row">
+					<div class="col-md-3 col-sm-6 text-center">
+						<div class="intro animate-box">
+							<span class="icon">
+								<i class="icon-map4"></i>
+							</span>
+							<h2>Address</h2>
+							<p>{{ setting.address }}</p>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 text-center">
+						<div class="intro animate-box">
+							<span class="icon">
+								<i class="icon-clock4"></i>
+							</span>
+							<h2>Opening Time</h2>
+							<p>Monday - Sunday</p>
+							<span>8am - 9pm</span>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 text-center">
+						<div class="intro animate-box">
+							<span class="icon">
+								<i class="icon-mobile2"></i>
+							</span>
+							<h2>Phone</h2>
+							<p>{{ setting.phone }}</p>
+							
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 text-center">
+						<div class="intro animate-box">
+							<span class="icon">
+								<i class="icon-envelope"></i>
+							</span>
+							<h2>Email</h2>
+							<p><a href="{{ setting.email }}">info@domain.com</a>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		{% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}} text-center" role="alert" style="background-color: #ff6107; color: #fff;">
+            {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+
+		<div class="goto-here"></div>
+
+		<div class="colorlib-about" class="colorlib-light-grey">
+			<div class="container">
+				<div class="row">
+					{% for setting in settings %}
+					<div class="col-md-5">
+						<div class="row">
+							<div class="about-desc">
+								
+								<div class="col-md-12 col-md-offset-0 animate-box intro-heading">
+									<span>Welcome to {{ setting.title }}</span>
+									<h2>{{ setting.aboutheader }}</h2>
+								</div>
+								<div class="col-md-12 animate-box">
+									<p>{{ setting.aboutus }}</p>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					<div class="col-md-7">
+						<div class="row">
+							<div class="col-md-6 animate-box">
+								<div class="about-img" style="background-image: url({{setting.image.url}});">
+								</div>
+							</div>
+							<div class="col-md-6 animate-box">
+								<div class="about-img about-img-2" style="background-image: url({{setting.imagetwo.url}});">
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		
+		
+
+		
+		
+
+		<div class="colorlib-testimony" style="background-image: url({% static 'main/images/cover_bg_2.jpg' %});" data-stellar-background-ratio="0.5">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3 text-center animate-box intro-heading">
+						
+					</div>
+				</div>
+				<div class="row animate-box">
+					<div class="owl-carousel">
+						<div class="item">
+							<div class="col-md-8 col-md-offset-2 text-center">
+								
+
+								<div class="testimony">
+									<blockquote>
+										<p></p>
+										
+									</blockquote>
+								</div>
+								
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		
+
+		<div class="colorlib-menu">
+			<div class="container">
+				<div class="colorlib-menu-2">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 text-center animate-box intro-heading">
+							<span class="icon"><i class="flaticon-cutlery"></i></span>
+							{% for setting in settings %}
+							<h2> {{ setting.title}} Menu </h2>
+							
+							{% endfor %}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 animate-box">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<ul class="nav nav-tabs text-center" role="tablist">
+										<li role="presentation" class="active"><a href="#main" aria-controls="mains" role="tab" data-toggle="tab">Main</a></li>
+										<li role="presentation"><a href="#desserts" aria-controls="desserts" role="tab" data-toggle="tab">Desserts</a></li>
+										<li role="presentation"><a href="#drinks" aria-controls="drinks" role="tab" data-toggle="tab">Drinks</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="tab-content">
+								<div role="tabpanel" class="tab-pane active" id="main">
+									<div class="row">
+										<div class="col-md-6">
+											<ul class="menu-dish">
+							              {% for mainmenu in mainmenus %}
+							              <li>
+							                <figure class="dish-entry">
+							                	<div class="dish-img" style="background-image: url({{mainmenu.image.url}});"></div>
+							                </figure>
+							                <div class="text">
+							                  <span class="price">${{ mainmenu.price }}</span>
+							                  <h3>{{ mainmenu.title }}</h3>
+							                  <p class="cat">{{ mainmenu.description }}</p>
+							                </div>
+							              </li>
+							              {% endfor %}
+							              
+							            </ul>
+										</div>
+										<div class="col-md-6">
+											<ul class="menu-dish">
+							              {% for mainb in mainbs %}
+							              <li>
+							                <figure class="dish-entry">
+							                	<div class="dish-img" style="background-image: url({{mainb.image.url}});"></div>
+							                </figure>
+							                <div class="text">
+							                  <span class="price">${{ mainb.price }}</span>
+							                  <h3>{{ mainb.title }}</h3>
+							                  <p class="cat">{{ mainb.description }}</p>
+							                </div>
+							              </li>
+							              {% endfor %}
+							              
+							            </ul>
+										</div>
+									</div>
+								</div>
+
+								<div role="tabpanel" class="tab-pane" id="desserts">
+									<div class="row">
+										<div class="col-md-6">
+											<ul class="menu-dish">
+							              {% for dessertmenu in dessertmenus %}
+							              <li>
+							                <figure class="dish-entry">
+							                	<div class="dish-img" style="background-image: url({{dessertmenu.image.url}});"></div>
+							                </figure>
+							                <div class="text">
+							                  <span class="price">${{ dessertmenu.price }}</span>
+							                  <h3>{{ dessertmenu.title }}</h3>
+							                  <p class="cat">{{ dessertmenu.description }}</p>
+							                </div>
+							              </li>
+							              {% endfor %}
+							              
+							            </ul>
+										</div>
+										<div class="col-md-6">
+											<ul class="menu-dish">
+												{% for dessertb in dessertbs %}
+							              <li>
+							                <figure class="dish-entry">
+							                	<div class="dish-img" style="background-image: url({{ dessertb.image.url }});"></div>
+							                </figure>
+							                <div class="text">
+							                  <span class="price">${{ dessertb.price }}</span>
+							                  <h3>{{ dessertb.title }}</h3>
+							                  <p class="cat">{{ dessertb.description }}</p>
+							                </div>
+							              </li>
+							              {% endfor %}
+							            </ul>
+										</div>
+									</div>
+								</div>
+
+								<div role="tabpanel" class="tab-pane" id="drinks">
+									<div class="row">
+										<div class="col-md-6">
+											<ul class="menu-dish">
+							              {% for drinkmenu in drinkmenus %}
+							              <li>
+							                <figure class="dish-entry">
+							                	<div class="dish-img" style="background-image: url({{drinkmenu.image.url}});"></div>
+							                </figure>
+							                <div class="text">
+							                  <span class="price">${{ drinkmenu.price }}</span>
+							                  <h3>{{ drinkmenu.title }}</h3>
+							                  <p class="cat">{{ drinkmenu.description }}</p>
+							                </div>
+							              </li>
+							              {% endfor %}
+							              
+							              
+							              
+							              
+							              
+							            </ul>
+										</div>
+										<div class="col-md-6">
+											<ul class="menu-dish">
+												{% for drinkb in drinkbs %}
+							              <li>
+							                <figure class="dish-entry">
+							                	<div class="dish-img" style="background-image: url({{ drinkb.image.url }});"></div>
+							                </figure>
+							                <div class="text">
+							                  <span class="price">${{ drinkb.price }}</span>
+							                  <h3>{{ drinkb.title }}</h3>
+							                  <p class="cat">{{ drinkb.description }}</p>
+							                </div>
+							              </li>
+							              {% endfor %}
+							            </ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 animate-box text-center">
+							
+							<p><a href="/reservation" class="btn btn-primary btn-outline btn-md">Book a table</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="colorlib-reservation reservation-img" style="background-image: url({% static 'main/images/cover_bg_2.jpg' %});" data-stellar-background-ratio="0.5">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3 text-center animate-box intro-heading">
+						<h2>Make A Reservation</h2>
+						<p>Come get the taste of Home</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<div class="row">
+							<div class="col-md-12">
+																<form method="post" action="/reservation/" class="colorlib-form">
+									{% csrf_token %}
+				              	<div class="row">
+										<div class="col-md-6 animate-box">
+											<div class="form-group">
+												<label for="name">Fullname</label>
+												<div class="form-field">
+													<input name="name" type="text" class="form-control" placeholder="name">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6 animate-box">
+											<div class="form-group">
+												<label for="email">Email</label>
+												<div class="form-field">
+													<input name="email" type="text" class="form-control" placeholder="email">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6 animate-box">
+											<div class="form-group">
+												<label for="phone">Phone</label>
+												<div class="form-field">
+													<input name="phone" type="text" class="form-control" placeholder="Phone">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6 animate-box">
+											<div class="form-group">
+												<label for="date">Date:</label>
+												<div class="form-field">
+													<i class="icon icon-calendar2"></i>
+													<input name="date" type="text" id="date" class="form-control date" placeholder="Date">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6 animate-box">
+											<div class="form-group">
+												<label for="time">Time</label>
+												<div class="form-field">
+													<i class="icon icon-arrow-down3"></i>
+													<select name="time" id="time" class="form-control">
+														<option value="6:30am">6:30am</option>
+														<option value="7:00am">7:00am</option>
+														<option value="7:30am">7:30am</option>
+														<option value="8:00am">8:00am</option>
+														<option value="8:30am">8:30am</option>
+														<option value="9:00am">9:00am</option>
+														<option value="9:30am">9:30am</option>
+														<option value="10:00am">10:00am</option>
+														<option value="10:30am">10:30am</option>
+														<option value="11:00am">11:00am</option>
+														<option value="11:30am">11:30am</option>
+														<option value="12:00am">12:00am</option>
+														<option value="12:30am">12:30am</option>
+														<option value="1:00pm">1:00pm</option>
+														<option value="1:30pm">1:30pm</option>
+														<option value="2:00pm">2:00pm</option>
+														<option value="2:30pm">2:30pm</option>
+														<option value="3:00pm">3:00pm</option>
+														<option value="3:30pm">3:30pm</option>
+														<option value="4:00pm">4:00pm</option>
+														<option value="4:30pm">4:30pm</option>
+														<option value="5:00pm">5:00pm</option>
+														<option value="5:30pm">5:30pm</option>
+														<option value="6:00pm">6:00pm</option>
+														<option value="6:30pm">6:30pm</option>
+														<option value="7:00pm">7:00pm</option>
+														<option value="7:30pm">7:30pm</option>
+														<option value="8:00pm">8:00pm</option>
+														<option value="8:30pm">8:30pm</option>
+														<option value="9:00pm">9:00pm</option>
+														<option value="9:30pm">9:30pm</option>
+														<option value="10:00pm">10:00pm</option>
+														<option value="10:30pm">10:30pm</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6 animate-box">
+											<div class="form-group">
+												<label for="person">Person</label>
+												<div class="form-field">
+													<i class="icon icon-arrow-down3"></i>
+													<select name="number" id="people" class="form-control">
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5+</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-12 animate-box">
+											<div class="row">
+												<div class="col-md-4 col-md-offset-4">
+													<input type="submit" name="submit" id="submit" value="Book a table" class="btn btn-primary btn-block">
+												</div>
+											</div>
+										</div>
+									</div>
+				            </form>
+			           	</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{% endblock %}

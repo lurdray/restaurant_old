@@ -1,0 +1,229 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+		<aside id="colorlib-hero">
+			<div class="flexslider">
+				<ul class="slides">
+					{% for slider in sliders %}
+			   	<li style="background-image: url({{ slider.image.url }});" data-stellar-background-ratio="0.5">
+			   		<div class="overlay"></div>
+			   		<div class="container-fluid">
+			   			<div class="row">
+				   			<div class="col-md-6 col-sm-12 col-xs-12 col-md-offset-3 slider-text">
+				   				<div class="slider-text-inner text-center">
+				   					<div class="desc">
+				   						<span class="icon"><i class="flaticon-cutlery"></i></span>
+					   					<h1>Our Menu</h1>
+					   					<p><span><a href="/">Home</a></span> <span>Menu</span></p>
+					   					<div class="desc2"></div>
+				   					</div>
+				   				</div>
+				   			</div>
+				   		</div>
+			   		</div>
+			   	</li>
+			   	{% endfor %}
+			  	</ul>
+		  	</div>
+		</aside>
+
+				<div class="colorlib-intro">
+			<div class="container">
+				{% for setting in settings %}
+				<div class="row">
+					<div class="col-md-3 col-sm-6 text-center">
+						<div class="intro animate-box">
+							<span class="icon">
+								<i class="icon-map4"></i>
+							</span>
+							<h2>Address</h2>
+							<p>{{ setting.address }}</p>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 text-center">
+						<div class="intro animate-box">
+							<span class="icon">
+								<i class="icon-clock4"></i>
+							</span>
+							<h2>Opening Time</h2>
+							<p>Monday - Sunday</p>
+							<span>8am - 9pm</span>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 text-center">
+						<div class="intro animate-box">
+							<span class="icon">
+								<i class="icon-mobile2"></i>
+							</span>
+							<h2>Phone</h2>
+							<p>{{ setting.phone }}</p>
+							
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6 text-center">
+						<div class="intro animate-box">
+							<span class="icon">
+								<i class="icon-envelope"></i>
+							</span>
+							<h2>Email</h2>
+							<p><a href="{{ setting.email }}">info@domain.com</a>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		<div class="colorlib-menu">
+			<div class="container">
+				<div class="row">
+					{% for setting in settings %}
+					<div class="col-md-6 col-md-offset-3 text-center animate-box intro-heading">
+						<span class="icon"><i class="flaticon-cutlery"></i></span>
+						<h2>{{ setting.title }}</h2>
+						
+					</div>
+					{% endfor %}
+				</div>
+				<div class="row">
+					<div class="col-md-12 animate-box">
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<ul class="nav nav-tabs text-center" role="tablist">
+									<li role="presentation" class="active"><a href="#main" aria-controls="mains" role="tab" data-toggle="tab">Main</a></li>
+									<li role="presentation"><a href="#desserts" aria-controls="desserts" role="tab" data-toggle="tab">Desserts</a></li>
+									<li role="presentation"><a href="#drinks" aria-controls="drinks" role="tab" data-toggle="tab">Drinks</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane active" id="main">
+								<div class="row">
+									<div class="col-md-6">
+																					<ul class="menu-dish">
+							              {% for mainmenu in mainmenus %}
+							              <li>
+							                <figure class="dish-entry">
+							                	<div class="dish-img" style="background-image: url({{mainmenu.image.url}});"></div>
+							                </figure>
+							                <div class="text">
+							                  <span class="price">${{ mainmenu.price }}</span>
+							                  <h3>{{ mainmenu.title }}</h3>
+							                  <p class="cat">{{ mainmenu.description }}</p>
+							                </div>
+							              </li>
+							              {% endfor %}
+							              
+							            </ul>
+										</div>
+										<div class="col-md-6">
+											<ul class="menu-dish">
+							              {% for mainb in mainbs %}
+							              <li>
+							                <figure class="dish-entry">
+							                	<div class="dish-img" style="background-image: url({{mainb.image.url}});"></div>
+							                </figure>
+							                <div class="text">
+							                  <span class="price">${{ mainb.price }}</span>
+							                  <h3>{{ mainb.title }}</h3>
+							                  <p class="cat">{{ mainb.description }}</p>
+							                </div>
+							              </li>
+							              {% endfor %}
+							              
+							            </ul>
+										</div>
+									</div>
+								</div>
+
+								<div role="tabpanel" class="tab-pane" id="desserts">
+									<div class="row">
+										<div class="col-md-6">
+											<ul class="menu-dish">
+							              {% for dessertmenu in dessertmenus %}
+							              <li>
+							                <figure class="dish-entry">
+							                	<div class="dish-img" style="background-image: url({{dessertmenu.image.url}});"></div>
+							                </figure>
+							                <div class="text">
+							                  <span class="price">${{ dessertmenu.price }}</span>
+							                  <h3>{{ dessertmenu.title }}</h3>
+							                  <p class="cat">{{ dessertmenu.description }}</p>
+							                </div>
+							              </li>
+							              {% endfor %}
+							              
+							            </ul>
+										</div>
+										<div class="col-md-6">
+											<ul class="menu-dish">
+												{% for dessertb in dessertbs %}
+							              <li>
+							                <figure class="dish-entry">
+							                	<div class="dish-img" style="background-image: url({{ dessertb.image.url }});"></div>
+							                </figure>
+							                <div class="text">
+							                  <span class="price">${{ dessertb.price }}</span>
+							                  <h3>{{ dessertb.title }}</h3>
+							                  <p class="cat">{{ dessertb.description }}</p>
+							                </div>
+							              </li>
+							              {% endfor %}
+							            </ul>
+										</div>
+									</div>
+								</div>
+
+								<div role="tabpanel" class="tab-pane" id="drinks">
+									<div class="row">
+										<div class="col-md-6">
+											<ul class="menu-dish">
+							              {% for drinkmenu in drinkmenus %}
+							              <li>
+							                <figure class="dish-entry">
+							                	<div class="dish-img" style="background-image: url({{drinkmenu.image.url}});"></div>
+							                </figure>
+							                <div class="text">
+							                  <span class="price">${{ drinkmenu.price }}</span>
+							                  <h3>{{ drinkmenu.title }}</h3>
+							                  <p class="cat">{{ drinkmenu.description }}</p>
+							                </div>
+							              </li>
+							              {% endfor %}
+							              
+							              
+							              
+							              
+							              
+							            </ul>
+										</div>
+										<div class="col-md-6">
+											<ul class="menu-dish">
+												{% for drinkb in drinkbs %}
+							              <li>
+							                <figure class="dish-entry">
+							                	<div class="dish-img" style="background-image: url({{ drinkb.image.url }});"></div>
+							                </figure>
+							                <div class="text">
+							                  <span class="price">${{ drinkb.price }}</span>
+							                  <h3>{{ drinkb.title }}</h3>
+							                  <p class="cat">{{ drinkb.description }}</p>
+							                </div>
+							              </li>
+							              {% endfor %}
+							            </ul>
+									
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 animate-box text-center">
+						
+						<p><a href="/reservation" class="btn btn-primary btn-outline btn-md">Book a table</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{% endblock %}
